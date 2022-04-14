@@ -1,0 +1,10 @@
+version: "2.1"
+
+services:
+  pythonProject3:
+    build: .
+    image: asignmentttt
+    container_name: asignment_for_coinpanelttt
+    ports:
+      - 5000:5000
+
