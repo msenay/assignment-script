@@ -1,12 +1,12 @@
 "# assignment-script"
 <br>
->docker-compose build
+<h3>docker-compose build</h3>
 <br>
->docker-compose up
+<h3>docker-compose up</h3>
 <br>
 or only
 <br>
->docker-compose up
+<h3>docker-compose up</h3>
 <br>
 In docker container cli
 <br>
