@@ -2,6 +2,7 @@ import json
 import websocket
 import datetime
 
+
 # socket connection
 def ws_trades(symbol,user_price):
     socket = f'wss://stream.binance.com:9443/ws/{symbol}@trade'  # ethusdt
@@ -16,6 +17,7 @@ def ws_trades(symbol,user_price):
     wsapp = websocket.WebSocketApp(socket, on_message=on_message, on_error=on_error)
     wsapp.run_forever()
 
+
 # handle price and symbol
 def handle_trades(json_message, user_price):
     date_time = datetime.datetime.fromtimestamp(json_message['E'] / 1000).strftime('%Y-%m-%d %H:%M:%S')
@@ -26,17 +28,15 @@ def handle_trades(json_message, user_price):
         print("TIMESTAMP: " + str(date_time))
         print("-----------------------")
 
+
 if __name__ == "__main__":
     while True:
         try:
             user_symbol = str(input("Hi...Please enter coin symbol....    ex. ethusdt\n"))
-            if user_symbol:
-                user_input = input(f"Please enter your price ?\n")
-                if user_input:
-                    ws_trades(user_symbol, user_input)
-                else:
-                    continue
+            user_input = input(f"Please enter your price ?\n")
+            if user_symbol.isalpha() and user_input.isnumeric():
+                ws_trades(user_symbol, user_input)
             else:
-                continue
+                print("Please enter proper price and symbol...")
         except:
-            print("error...try again")
+            print("you can exit with ctrl+C end try it again...")
